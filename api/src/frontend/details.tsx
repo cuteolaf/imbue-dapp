@@ -427,6 +427,12 @@ class Details extends React.Component<DetailsProps, DetailsState> {
               }`}
               style={{ color: "white" }}
             >
+              <div className="total-contributors-container">
+                <span>Number of contributors:</span>
+                <span className="contributor-count">
+                  {this.state.projectOnChain.contributions.length}
+                </span>
+              </div>
               <DataTable>
                 <DataTableContent>
                   <DataTableHead>
