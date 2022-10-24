@@ -446,16 +446,21 @@ class Details extends React.Component<DetailsProps, DetailsState> {
                     </DataTableRow>
                   </DataTableHead>
                   <DataTableBody>
-                    {this.state.projectOnChain.contributions.map(
-                      ({ accountId, value }, index) => (
+                    {this.state.projectOnChain.contributions
+                      .sort((a, b) => Number(b.value) - Number(a.value))
+                      .map(({ accountId, value }, index) => (
                         <DataTableRow key={index}>
-                          <DataTableCell>{accountId}</DataTableCell>
+                          <DataTableCell>{`${accountId.substring(
+                            0,
+                            4
+                          )}...${accountId.substring(
+                            accountId.length - 4
+                          )}`}</DataTableCell>
                           <DataTableCell isNumeric>
                             {(Number(value) / 1e12).toFixed(4)}
                           </DataTableCell>
                         </DataTableRow>
-                      )
-                    )}
+                      ))}
                   </DataTableBody>
                 </DataTableContent>
               </DataTable>
